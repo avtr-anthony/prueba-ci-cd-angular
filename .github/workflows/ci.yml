@@ -31,20 +31,16 @@ jobs:
       - name: Error Lint
         if: ${{ steps.eslint.outcome == 'failure' }}
         run: |
-          MSG="Se encontraron errores de lint. Se subirá el artifact eslint-report."
-          echo "::warning title=Lint detectó errores::$MSG"
           echo "## Resultado de lint" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "❌ $MSG" >> "$GITHUB_STEP_SUMMARY"
+          echo "❌ Se encontraron errores de lint. Revisa el artifact \`eslint-report\`." >> "$GITHUB_STEP_SUMMARY"
 
       - name: No error lint
         if: ${{ steps.eslint.outcome == 'success' }}
         run: |
-          MSG="No se encontraron errores de lint."
-          echo "::notice title=Lint sin errores::$MSG"
           echo "## Resumen de lint" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "✅ $MSG" >> $GITHUB_STEP_SUMMARY
+          echo "✅ No se encontraron errores de lint." >> $GITHUB_STEP_SUMMARY
 
       - name: UploadEslintReport
         if: ${{ steps.eslint.outcome == 'failure' }}
