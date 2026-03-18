@@ -26,10 +26,25 @@ jobs:
       - name: lint
         id: eslint
         continue-on-error: true
-        run: |
-          npm run lint:report
+        run: npm run lint:report
 
-      - name: Upload Eslint report
+      - name: Lint report
+        if: ${{ steps.eslint.outcome == 'failure' }}
+        run: |
+          echo "Buscando errores de lint..."
+          echo "Resumen de errores:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Se encontraron errores de lint. Se subira reporte eslint-report.txt" >> $GITHUB_STEP_SUMMARY
+
+      - name: No error lint
+        if: ${{ steps.eslint.outcome == 'success' }}
+        run: |
+          echo "Buscando errores de lint..."
+          echo "## Resultado de lint" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "No se encontraron errores de lint." >> $GITHUB_STEP_SUMMARY
+
+      - name: UploadEslintReport
         if: ${{ steps.eslint.outcome == 'failure' }}
         uses: actions/upload-artifact@v4
         with:
