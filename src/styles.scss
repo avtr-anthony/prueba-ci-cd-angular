@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
+
+:root {
+  color-scheme: light;
+  font-family: 'Manrope', 'Segoe UI', sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(242, 214, 188, 0.5), transparent 38%),
+    linear-gradient(180deg, #f6efe6 0%, #edf4ef 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  color: #13202b;
+  background: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+strong {
+  font-family: 'Space Grotesk', 'Segoe UI Semibold', sans-serif;
+}
+
+h2,
+h3,
+p,
+li,
+a,
+code,
+span {
+  margin: 0;
+}
+
+p,
+li {
+  color: var(--muted, #52606d);
+  line-height: 1.65;
+}
+
+.stack-list,
+.extension-list,
+.timeline {
+  margin: 0;
+  padding: 0;
+}
+
+code {
+  font-family: 'IBM Plex Mono', Consolas, monospace;
+}
+
+a:focus-visible,
+.button:focus-visible {
+  outline: 3px solid rgba(15, 118, 110, 0.35);
+  outline-offset: 3px;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
