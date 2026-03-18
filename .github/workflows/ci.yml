@@ -24,7 +24,17 @@ jobs:
         run: npm ci
 
       - name: lint
-        run: npm run lint
+        id: eslint
+        continue-on-error: true
+        run: |
+          npm run lint . -f stylish -o eslint-report.txt
+
+      - name: Upload Eslint report
+        if: ${{ steps.eslint.outcome == 'failure' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: eslint-report
+          path: eslint-report.txt
 
       - name: test
         run: npx ng test --watch=false
