@@ -12,7 +12,8 @@
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
     "ci:check": "npm run format:check && npm run test:ci && npm run build",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "lint:report": "eslint . -f stylish -o eslint-report.txt"
   },
   "private": true,
   "packageManager": "npm@11.11.1",

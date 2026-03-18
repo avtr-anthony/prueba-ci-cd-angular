@@ -27,7 +27,7 @@ jobs:
         id: eslint
         continue-on-error: true
         run: |
-          npm run lint . -f stylish -o eslint-report.txt
+          npm run lint:report
 
       - name: Upload Eslint report
         if: ${{ steps.eslint.outcome == 'failure' }}
